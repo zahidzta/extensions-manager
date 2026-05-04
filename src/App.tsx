@@ -15,7 +15,7 @@ function App() {
       <h1>Hola mundo</h1>
       <button 
         onClick={() => handleChange()} 
-        className={settings.theme === "dark" ? "text-white bg-black" : "text-black bg-white"}
+        className="bg-white dark:bg-black text-black dark:text-white"
       >
         Change theme
       </button>

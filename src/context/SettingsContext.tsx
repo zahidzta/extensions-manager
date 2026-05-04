@@ -1,11 +1,11 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 
 type Settings = {
     theme: "light" | "dark"
 }
 
 const defaultSettings: Settings = {
-    theme: "dark",
+    theme: "light",
 }
 
 type SettingsContextType = {
@@ -17,6 +17,15 @@ const SettingsContext = createContext<SettingsContextType | null>(null)
 
 export function SettingsProvider({children} : {children: React.ReactNode}) {
     const [settings, setSettings] = useState<Settings>(defaultSettings)
+
+    useEffect(() => {
+        const root = document.documentElement
+        if (settings.theme === "dark") {
+            root.classList.add("dark")
+        } else {
+            root.classList.remove("dark")
+        }
+    }, [settings.theme])
 
     const updateSettings = <K extends keyof Settings>(key: K, value: Settings[K]) => {
         setSettings(prev => ({...prev, [key]: value}))
