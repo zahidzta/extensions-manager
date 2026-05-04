@@ -7,6 +7,7 @@ export function Filter() {
             <div className="flex justify-evenly">
                 {FILTERS.map(filter => (
                     <button
+                        key={filter.value}
                         className=" rounded-full py-2 px-4 bg-white shadow"
                     >
                         {filter.label}
