@@ -1,6 +1,15 @@
 import { FILTERS } from "../constants/filters";
+import { useSettings } from "../context/SettingsContext";
+import type { Filter } from "../types";
 
 export function Filter() {
+
+    const {settings, updateSettings} = useSettings()
+
+    function handleChange(filter : Filter) {
+        updateSettings("filter", filter)
+    }
+
     return (
         <div className="flex flex-col gap-5">
             <h1 className="text-3xl text-center font-bold">Extensions List</h1>
@@ -8,7 +17,8 @@ export function Filter() {
                 {FILTERS.map(filter => (
                     <button
                         key={filter.value}
-                        className=" rounded-full py-2 px-4 bg-white shadow"
+                        className={`${settings.filter === filter.value ? "bg-red-400": "bg-white"} rounded-full py-2 px-4 shadow` }
+                        onClick={() => handleChange(filter.value)}
                     >
                         {filter.label}
                     </button>
