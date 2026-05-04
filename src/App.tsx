@@ -1,24 +1,10 @@
-import { useSettings } from "./context/SettingsContext"
+import Header from "./components/Header"
 
 function App() {
 
-  const {settings, updateSettings} = useSettings()
-
-  function handleChange() {
-    let theme = settings.theme
-    theme = theme === "dark" ? "light" : "dark"
-    updateSettings("theme", theme)
-  }
-
   return (
-    <div className="font-mono">
-      <h1>Hola mundo</h1>
-      <button 
-        onClick={() => handleChange()} 
-        className="bg-white dark:bg-black text-black dark:text-white"
-      >
-        Change theme
-      </button>
+    <div className="font-mono bg-neutral-100 h-screen p-3">
+      <Header />
     </div>
   )
 }
