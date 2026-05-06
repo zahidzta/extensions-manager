@@ -46,7 +46,7 @@ function App() {
   
 
   return (
-    <div className="font-mono bg-neutral-100 h-screen p-3 space-y-7 text-base">
+    <div className="text-black dark:text-white p-3 space-y-7 bg-gradient-light dark:bg-gradient-dark ">
       <Header />
       <Filter />
       <div className="flex flex-col gap-4">

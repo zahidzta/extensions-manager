@@ -17,7 +17,7 @@ export function Filter() {
                 {FILTERS.map(filter => (
                     <button
                         key={filter.value}
-                        className={`${settings.filter === filter.value ? "bg-red-400": "bg-white"} rounded-full py-2 px-4 shadow` }
+                        className={`${settings.filter === filter.value ? "bg-red-400": "bg-white dark:bg-neutral-800"} rounded-full py-2 px-4 shadow` }
                         onClick={() => handleChange(filter.value)}
                     >
                         {filter.label}
