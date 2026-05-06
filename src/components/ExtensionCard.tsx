@@ -3,9 +3,10 @@ import type { Extension } from "../types"
 type ExtensionCardProps = {
     info: Extension
     onChange: (name: string) => void
+    onDelete: (name: string) => void
 }
 
-export default function ExtensionCard({ info, onChange }: ExtensionCardProps) {
+export default function ExtensionCard({ info, onChange, onDelete }: ExtensionCardProps) {
     return (
         <div className="bg-white p-5 rounded-2xl shadow space-y-6">
             <div className="flex items-start gap-4">
@@ -16,7 +17,7 @@ export default function ExtensionCard({ info, onChange }: ExtensionCardProps) {
                 </div>
             </div>
             <div className="flex justify-between">
-                <button className="border border-neutral-400 rounded-full py-2 px-4 bg-white">Remove</button>
+                <button className="border border-neutral-400 rounded-full py-2 px-4 bg-white" onClick={() => onDelete(info.name)}>Remove</button>
 
                 <button
                     role="switch"

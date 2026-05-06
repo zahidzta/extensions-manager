@@ -18,6 +18,10 @@ function App() {
     ))
   }
 
+  function handleDelete(name : Extension["name"]) {
+    setExtensions(prev => prev.filter(ex => ex.name !== name))
+  }
+
   const filteredExtensions = useMemo(() => {
     return extensions.filter(ex => {
       if (settings.filter === "All") return true
@@ -35,7 +39,7 @@ function App() {
       <Filter />
       <div className="flex flex-col gap-4">
         {filteredExtensions.map(extension => (
-          <ExtensionCard key={extension.name} info={extension} onChange={toggleExtension} />
+          <ExtensionCard key={extension.name} info={extension} onChange={toggleExtension} onDelete={handleDelete}/>
         ))}
       </div>
     </div>
