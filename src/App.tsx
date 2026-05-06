@@ -46,10 +46,10 @@ function App() {
   
 
   return (
-    <div className="text-black dark:text-white p-3 space-y-7 bg-gradient-light dark:bg-gradient-dark ">
+    <div className="min-h-screen text-black dark:text-white p-3 desktop:px-10 space-y-7 bg-gradient-light dark:bg-gradient-dark ">
       <Header />
       <Filter />
-      <div className="flex flex-col gap-4">
+      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {filteredExtensions.map(extension => (
           <ExtensionCard 
             key={extension.name} 

@@ -11,9 +11,9 @@ export function Filter() {
     }
 
     return (
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col desktop:flex-row justify-between gap-5">
             <h1 className="text-3xl text-center font-bold">Extensions List</h1>
-            <div className="flex justify-evenly">
+            <div className="flex justify-evenly desktop:gap-7">
                 {FILTERS.map(filter => (
                     <button
                         key={filter.value}
