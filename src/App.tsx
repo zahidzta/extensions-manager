@@ -5,12 +5,15 @@ import Header from "./components/Header"
 import { EXTENSIONS } from "./constants/data"
 import { useSettings } from "./context/SettingsContext"
 import type { Extension } from "./types"
+import { DeleteAlert } from "./components/DeleteAlert"
 
 function App() {
 
   const {settings} = useSettings()
 
   const [extensions, setExtensions] = useState<Extension[]>(EXTENSIONS)
+  const [pendingDelete, setPendingDelete] = useState<string | null>(null)
+
 
   function toggleExtension(name : Extension["name"]) {
     setExtensions(prev => prev.map(ex => 
@@ -19,7 +22,16 @@ function App() {
   }
 
   function handleDelete(name : Extension["name"]) {
-    setExtensions(prev => prev.filter(ex => ex.name !== name))
+    setPendingDelete(name)
+  }
+
+  function confirmDelete() {
+    setExtensions(prev => prev.filter(ex => ex.name !== pendingDelete))
+    setPendingDelete(null)
+  }
+
+  function cancelDelete() {
+    setPendingDelete(null)
   }
 
   const filteredExtensions = useMemo(() => {
@@ -39,9 +51,21 @@ function App() {
       <Filter />
       <div className="flex flex-col gap-4">
         {filteredExtensions.map(extension => (
-          <ExtensionCard key={extension.name} info={extension} onChange={toggleExtension} onDelete={handleDelete}/>
+          <ExtensionCard 
+            key={extension.name} 
+            info={extension} 
+            onChange={toggleExtension} 
+            onDelete={handleDelete}
+          />
         ))}
       </div>
+      {pendingDelete && 
+        <DeleteAlert 
+          name={pendingDelete}
+          onCancel={cancelDelete}
+          onConfirm={confirmDelete}
+        />
+      }
     </div>
   )
 }
