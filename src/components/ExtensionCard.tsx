@@ -1,3 +1,4 @@
+import { useSettings } from "../context/SettingsContext"
 import type { Extension } from "../types"
 
 type ExtensionCardProps = {
@@ -7,6 +8,7 @@ type ExtensionCardProps = {
 }
 
 export default function ExtensionCard({ info, onChange, onDelete }: ExtensionCardProps) {
+    const {settings} = useSettings()
     return (
         <div className="bg-white dark:bg-neutral-800 p-5 rounded-2xl shadow space-y-6">
             <div className="flex items-start gap-4">
@@ -17,7 +19,7 @@ export default function ExtensionCard({ info, onChange, onDelete }: ExtensionCar
                 </div>
             </div>
             <div className="flex justify-between">
-                <button className="border border-neutral-400 rounded-full py-2 px-4" onClick={() => onDelete(info.name)}>Remove</button>
+                <button className={`${settings.theme === "dark" ? "hover:text-neutral-800" : "hover:text-white" } border border-neutral-400 rounded-full py-2 px-4 cursor-pointer hover:bg-red-400`} onClick={() => onDelete(info.name)}>Remove</button>
 
                 <button
                     role="switch"

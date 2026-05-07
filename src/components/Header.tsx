@@ -15,7 +15,7 @@ export default function Header() {
             <img src="logo.svg" alt="logo" />
             <button 
                 onClick={() => handleChange()}
-                className="bg-neutral-100 dark:bg-neutral-700 p-5 rounded-2xl"
+                className="bg-neutral-100 dark:bg-neutral-700 p-5 rounded-2xl cursor-pointer"
             >
                 <img src={settings.theme === "dark" ? "icon-sun.svg" : "icon-moon.svg"} alt="theme-icon" />
             </button>
