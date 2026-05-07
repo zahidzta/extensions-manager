@@ -12,7 +12,7 @@ export default function Header() {
 
     return(
         <header className="flex justify-between bg-white dark:bg-neutral-800 p-3 rounded-2xl">
-            <img src="logo.svg" alt="logo" />
+            <img src={settings.theme === "dark" ? "logo-invert.svg" : "logo.svg" } alt="logo" />
             <button 
                 onClick={() => handleChange()}
                 className="bg-neutral-100 dark:bg-neutral-700 p-5 rounded-2xl cursor-pointer"
