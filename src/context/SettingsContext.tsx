@@ -4,11 +4,13 @@ import type { Filter } from "../types"
 type Settings = {
     theme: "light" | "dark"
     filter: Filter
+    language: "es" | "en"
 }
 
 const defaultSettings: Settings = {
     theme: "light",
-    filter: "All"
+    filter: "All",
+    language: "es"
 }
 
 type SettingsContextType = {

@@ -1,4 +1,5 @@
 import { useSettings } from "../context/SettingsContext"
+import { TRANSLATIONS, type TranslationKey } from "../constants/translations"
 import type { Extension } from "../types"
 
 type ExtensionCardProps = {
@@ -15,11 +16,11 @@ export default function ExtensionCard({ info, onChange, onDelete }: ExtensionCar
                 <img src={info.logo} alt={info.name} />
                 <div className="space-y-1">
                     <h2>{info.name}</h2>
-                    <p>{info.description}</p>
+                    <p>{TRANSLATIONS[settings.language][`${info.name}_desc` as TranslationKey]}</p>
                 </div>
             </div>
             <div className="flex justify-between">
-                <button className={`${settings.theme === "dark" ? "hover:text-neutral-800" : "hover:text-white" } border border-neutral-400 rounded-full py-2 px-4 cursor-pointer hover:bg-red-400`} onClick={() => onDelete(info.name)}>Remove</button>
+                <button className={`${settings.theme === "dark" ? "hover:text-neutral-800" : "hover:text-white" } border border-neutral-400 rounded-full py-2 px-4 cursor-pointer hover:bg-red-400`} onClick={() => onDelete(info.name)}>{TRANSLATIONS[settings.language]["Remove"]}</button>
 
                 <button
                     role="switch"
